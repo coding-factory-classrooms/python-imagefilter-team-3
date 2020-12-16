@@ -1,10 +1,10 @@
 from filters import grey
-from filters import distrate
+from filters import distension
 from filters import blurred
 
 grey.grey_picture()
 
-distrate.distrate_picture()
+distension.distension_picture()
 
 blurred.blur_picture()
 
