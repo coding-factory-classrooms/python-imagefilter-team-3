@@ -5,6 +5,7 @@ import cv2
 from filters import grey, distension, blurred
 import sys
 
+
 input_dir = 'imgs'
 
 
@@ -18,6 +19,7 @@ for i in range(0, len(args)):
     print(arg)
     if args[i] == '-i':
         inputdirectory = args[i + 1]
+
     if args[i] == '-o':
         outputdirectory = args[i + 1]
 
@@ -26,10 +28,10 @@ for i in range(0, len(args)):
         print("-i, --input-dir <directory>")
         print("-o, --output-dir <directory>")
 
-
+# Thanks to the command line '-i', the method 'listdir' return a list of the directory 'imgs'
 files = os.listdir(inputdirectory)
 
-
+# For each file of the directory 'imgs', we apply three filters on it and save it in the directory 'output'
 for file_name in files:
     print(file_name)
 
@@ -44,6 +46,7 @@ for file_name in files:
     cv2.imwrite(outputdirectory + '/' + file_name, image)
 
 
+# Display on console the content of the file 'images.log'
 logger.dump_log()
 
 try:
