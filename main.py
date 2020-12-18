@@ -1,30 +1,15 @@
 import os
+import logger
 import cv2
 from filters import grey, distension, blurred
 import sys
 
 input_dir = 'imgs'
-files = os.listdir(input_dir)
-print(files)
-
-for f in files:
-    print(f)
-
-    image = cv2.imread(f'{input_dir}/{f}')
-
-    image = grey.grey(image)
-
-    image = distension.distension(image)
-
-    image = blurred.blur(image)
-
-    cv2.imwrite(f'output/{f}', image)
 
 a = {}
 
-
 args = sys.argv
-print(args)
+
 for i in range(0, len(args)):
     arg = args[i]
     print(i)
@@ -40,24 +25,24 @@ for i in range(0, len(args)):
         print("-o, --output-dir <directory>")
 
 
-
 files = os.listdir(inputdirectory)
-print(files)
-
-for f in files:
-    print(f)
-
-    image = cv2.imread(inputdirectory + '/' + f)
-
-    image = grey.grey(image)
-
-    image = distension.distension(image)
-
-    image = blurred.blur(image)
-
-    cv2.imwrite(outputdirectory + '/' + f,image)
 
 
+for file_name in files:
+    print(file_name)
+
+    image = cv2.imread(inputdirectory + '/' + file_name)
+
+    image = grey.grey(image, file_name)
+
+    image = distension.distension(image, file_name)
+
+    image = blurred.blur(image, file_name)
+
+    cv2.imwrite(outputdirectory + '/' + file_name, image)
+
+
+logger.dump_log()
 
 
 
