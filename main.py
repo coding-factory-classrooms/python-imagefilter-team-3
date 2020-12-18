@@ -10,7 +10,6 @@ input_dir = 'imgs'
 
 
 a = {}
-
 args = sys.argv
 
 for i in range(0, len(args)):
@@ -49,12 +48,12 @@ for file_name in files:
 # Display on console the content of the file 'images.log'
 logger.dump_log()
 
-try:
-    with os.scandir(args['entry']) as entries:
-        for files in entries:
+try: # 'entry' et 'filter_to_apply ne peuvent pas définir a l'exception de
+    with os.scandir(args['entry']) as entries:#ouvrir le répertoire sous forme de liste
+        for files in entries:# le fichier représente des images
             path = f'{args["output"]}{file_name}'
-            image = cv2.imread(f'{args["entry"]}{file_name}')
-            image = blurred.distension.grey.modify_img(image,args["filtre_to_apply"])
+            image = cv2.imread(f'{args["entry"]}{file_name}') # réference des images
+            image = blurred.distension.grey.modify_img(image,args["filter_to_apply"])
             blurred.distension.grey.save_image(image,path)
             blurred.distension.grey.image_nbr += 1
 except NameError:
