@@ -10,4 +10,3 @@ def distension(image, file_name):
     image_distension = cv2.dilate(image, dilate, iterations=2)
     return image_distension
 
-
